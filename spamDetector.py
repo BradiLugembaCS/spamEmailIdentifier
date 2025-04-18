@@ -1,4 +1,6 @@
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
 
 # Function to load and preprocess the SMS spam dataset
 def load_data():
@@ -7,7 +9,13 @@ def load_data():
     data['label'] = data['label'].map({'ham':0, 'spam':1})
     return data
 
-
+# Transforms text data into TF-IDF features and prepares it for model training.
+def train_model(data):
+    x = data['text']
+    y = data['label']
+    vectorizer = TfidfVectorizer()
+    x = vectorizer.fit_transform(x)
+    
 
 
 

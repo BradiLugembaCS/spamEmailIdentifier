@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 
+
 # Function to load and preprocess the SMS spam dataset
 def load_data():
     url = "https://raw.githubusercontent.com/justmarkham/pycon-2016-tutorial/master/data/sms.tsv"
@@ -15,6 +16,8 @@ def train_model(data):
     y = data['label']
     vectorizer = TfidfVectorizer()
     x = vectorizer.fit_transform(x)
+    x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.2) # splitting the data, training 80%, testing 20%
+
     
 
 
